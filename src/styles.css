@@ -1,0 +1,45 @@
+
+@import '../node_modules/ag-grid/dist/styles/ag-grid.css';
+@import '../node_modules/ag-grid/dist/styles/ag-theme-blue.css';
+
+body {
+  font-family: 'Roboto light', sans-serif;
+  font-size: 14px;
+}
+
+.wf-form-innergroup {
+  border: 3px #fff;
+  border-radius: 3px;
+  padding:10px;
+}
+
+.wf-form-section {
+  font-style: oblique;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid #1b7d97;
+  background: #f5f4f8;
+  margin-bottom: 5px;
+}
+
+.wf-form-division {
+  border-bottom: 1px solid #1b7d97;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.wf-derecha {
+  margin-right:  5px;
+}
+
+.wf-header  {
+  background: url("assets/images/Header4.png");
+  width: 100%;
+  height: auto;
+
+}
+
+.wf-espaciador-row {
+  margin-bottom: 3px;
+}

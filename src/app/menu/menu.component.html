@@ -1,0 +1,38 @@
+<div class="contenedor-menu">
+  <a href="#" class="btn-menu">Manu<i class="icono fa fa-bars" aria-hidden="true"></i></a>
+  <ul class="menu">
+    <li><a href="#"><i class="icono izquierda fa fa-home" aria-hidden="true"></i>Inicio</a></li>
+    <li><a href="#"><i class="icono izquierda fa fa-star" aria-hidden="true"></i>Catálogos<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
+      <ul>
+        <li><a [routerLink]="['/clientes']">Clientes</a></li>
+        <li><a [routerLink]="['/productos']">Productos</a></li>
+        <li><a href="#">Unidades de Medida</a></li>
+      </ul>
+    </li>
+    <li><a href="#"><i class="icono izquierda fas fa-file" aria-hidden="true"></i>Facturación<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
+      <ul>
+        <li><a [routerLink]="['/consulta-cfdi']">Consultas</a></li>
+        <li><a [routerLink]="['/emision-cfdi']" href="#">Emisión</a></li>
+        <li><a [routerLink]="['/complemento-pago']" href="#">Pagos</a></li>
+      </ul>
+    </li>
+    <li><a href="#"><i class="icono izquierda fa fa-sliders-h" aria-hidden="true"></i>Administración<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
+      <ul>
+        <li><a href="#">Sucursales</a></li>
+        <li><a href="#">Llaves</a></li>
+      </ul>
+    </li>
+    <li><a href="#"><i class="icono izquierda fa fa-lock" aria-hidden="true"></i>Seguridad<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
+      <ul>
+        <li><a href="#">Usuarios</a></li>
+        <li><a href="#">Perfiles</a></li>
+      </ul>
+    </li>
+    <li><a href="#"><i class="icono izquierda fa fa-cogs" aria-hidden="true"></i>Configuracion<i class="icono derecha fa fa-chevron-down" aria-hidden="true"></i></a>
+      <ul>
+        <li><a href="#">Tipos de Documentos</a></li>
+        <li><a href="#">Certificados</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>

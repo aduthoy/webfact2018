@@ -1,0 +1,116 @@
+<div class="card">
+  <div class="card-header"><h4>Catálogo de Productos</h4></div>
+  <div class="card-body">
+    <div class="row wf-espaciador-row">
+      <label for="cuenta" class="col-sm-2 col-form-label col-form-label-sm">Cuenta:</label>
+      <div class="col-sm-8">
+        <select id="cuenta" class="form-control form-control-sm">
+          <option value="1">Servicios de Programación de Chihuahua S.C.</option>
+          <option value="2">Taylor Made Software House, S.C.</option>
+        </select>
+      </div>
+    </div>
+    <hr>
+    <div class="row wf-espaciador-row">
+      <div class="col-sm-12">
+        <button type="button" class="btn btn-outline-success btn-sm" [disabled]="accion" (click)="newClick()"><i class="far fa-plus-square wf-derecha"></i>Nuevo</button>
+        <button type="button" class="btn btn-outline-dark btn-sm" [disabled]="accion" (click)="ediClick()"><i class="fas fa-edit wf-derecha"></i>Editar</button>
+        <button type="button" class="btn btn-outline-danger btn-sm" [disabled]="accion" (click)="inactivarClic()"><i class="far fa-thumbs-down wf-derecha"></i>Inactivar</button>
+      </div>
+    </div>
+    <hr>
+    <div class="row wf-espaciador-row">
+      <div class="col-sm-12" *ngIf="accion === 0">
+        <ag-grid-angular #agGrid style="width: 100%; height: 300px;" class="ag-theme-blue"
+                         id="prodcutosGrid"
+                         rowHeight="18px"
+                         [gridOptions]="productosGrid"
+                         [autoGroupColumnDef]="productosGrid.columnDefs"
+                         [rowData]="productosGrid.rowData"
+                         (selectionChanged)="onSeletedRow($event)"
+                         (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+      </div>
+    </div>
+    <div class="row wf-espaciador-row" *ngIf="accion === 1 || accion === 2">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h6 *ngIf="accion === 1">Alta Nuevo Producto</h6>
+            <h6 *ngIf="accion === 2">Edición de Producto</h6>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="form-row wf-espaciador-row wf-form-division">
+                <div class="col-sm-12">
+                  <span>Información del Producto</span>
+                </div>
+              </div>
+              <div class="form-row wf-espaciador-row">
+                <label for="cveProd" class="col-sm-1 col-form-label col-form-label-sm">Clave:</label>
+                <div class="col-sm-2">
+                  <input type="text" id="cveProd" name="cveProd" class="form-control form-control-sm">
+                </div>
+                <label for="descProd" class="col-sm-2 col-form-label col-form-label-sm">Descripcion Producto:</label>
+                <div class="col-sm-5">
+                  <input type="text" id="descProd" name="descProd" class="form-control form-control-sm">
+                </div>
+                <label for="umProd" class="col-sm-1 col-form-label col-form-label-sm">UM:</label>
+                <div class="col-sm-1">
+                  <select id="umProd" name="umProd" class="form-control form-control-sm">
+                    <option value="1">Servicio</option>
+                    <option value="2">Pza</option>
+                    <option value="3">Kg</option>
+                    <option value="4">Tarifa</option>
+                  </select>
+                </div>
+              </div>
+              <br>
+              <div class="form-row wf-espaciador-row">
+                <label for="cveprodSAT" class="col-sm-1 col-form-label col-form-label-sm">Cve SAT:</label>
+                <div class="col-sm-2">
+                  <input type="text" id="cveprodSAT" name="cveprodSAT" class="form-control form-control-sm">
+                </div>
+                <label for="descprodSAT" class="col-sm-1 col-form-label col-form-label-sm">Prod. SAT:</label>
+                <div class="col-sm-3">
+                  <input type="email" id="descprodSAT" name="descprodSAT" class="form-control form-control-sm">
+                </div>
+                <label for="umSAT" class="col-sm-1 col-form-label col-form-label-sm">UM. SAT:</label>
+                <div class="col-sm-1">
+                  <input type="email" id="umSAT" name="umSAT" class="form-control form-control-sm">
+                </div>
+                <label for="decumSAT" class="col-sm-1 col-form-label col-form-label-sm">Desc. SAT:</label>
+                <div class="col-sm-2">
+                  <input type="email" id="decumSAT" name="decumSAT" class="form-control form-control-sm">
+                </div>
+              </div>
+              <br>
+              <div class="form-row wf-espaciador-row">
+                <label for="punitarioProd" class="col-sm-2 col-form-label col-form-label-sm">Precio Unitario:</label>
+                <div class="col-sm-3">
+                  <input id="punitarioProd" type="text" name="punitarioProd" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="form-row wf-espaciador-row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4">
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" type="checkbox" value="" id="activo">
+                    <label class="form-check-label" for="activo">Activo</label>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="form-row wf-espaciador-row">
+                <div class="col-sm 12">
+                  <button type="button" class="btn btn-outline-success btn-sm"><i class="fas fa-check wf-derecha"></i>Guardar</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm"(click)="cancelFrm()"><i class="fas fa-times wf-derecha"></i>Cancelar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,124 @@
+<div class="card">
+  <div class="card-header"><h4>Consulta de CFDIs</h4></div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-sm-12 wf-form-division"><span>Criterios de Busqueda</span></div>
+    </div>
+    <form>
+      <div class="form-row wf-espaciador-row">
+        <div class="col-sm-4">
+          <label class="col-form-label col-form-label-sm">Cuenta:</label>
+          <select id="cuenta" name="cuenta"  class="form-control form-control-sm" >
+            <option value="1">Servicos de Programación de Chihuahua, S.C.</option>
+            <option value="2">Teylor Made Software House, S.C.</option>
+          </select>
+        </div>
+        <div class="col-sm-4">
+          <label for="sucursal" class="col-form-label col-form-label-sm">Sucursal:</label>
+          <select id="sucursal" name="sucursal" class="form-control form-control-sm">
+            <option value="1">Principal</option>
+            <option value="2">Sucursal 1</option>
+          </select>
+        </div>
+        <div class="col-sm-4">
+          <label for="tipocomprobante" class="col-form-label col-form-label-sm">Tipo de Coprobante</label>
+          <select id="tipocomprobante" name="tipocomprobante" class="form-control form-control-sm">
+            <option value="1">Factura</option>
+            <option value="2">Nota de Crédito </option>
+            <option value="3">Recibo de Honorario</option>
+          </select>
+        </div>
+      </div>
+      <hr>
+      <div class="form-row wf-espaciador-row">
+        <label for="rfc" class="col-sm-2 col-form-label col-form-label-sm">RFC:</label>
+        <div class="col-sm-3">
+          <input type="text" class="form-control form-control-sm" id="rfc" name="rfc">
+        </div>
+        <label for="razonsocial" class="col-sm-2 col-form-label col-form-label-sm">Razón Social:</label>
+        <div class="col-sm-5">
+          <input type="text" class="form-control form-control-sm" id="razonsocial" name="razonsocial">
+        </div>
+      </div>
+      <div class="form-row wf-espaciador-row">
+        <label for="fechaInicial" class="col-sm-2 col-form-label col-form-label-sm">Fecha Inicial:</label>
+        <div class="col-sm-3">
+          <input type="date" class="form-control form-control-sm" id="fechaInicial" name="fechainicial">
+        </div>
+        <label for="fechafinal" class="col-sm-2 col-form-label col-form-label-sm">Fecha Final:</label>
+        <div class="col-sm-3">
+          <input type="date" class="form-control form-control-sm" id="fechafinal" name="fechainicial">
+        </div>
+      </div>
+      <div class="form-row wf-espaciador-row">
+        <label for="serie" class="col-sm-2 col-form-label col-form-label-sm">Serie:</label>
+        <div class="col-sm-2">
+          <select id="serie" class="form-control form-control-sm">
+            <option value="1">A</option>
+            <option value="1">FC</option>
+          </select>
+        </div>
+        <label for="folioinicial" class="col-sm-2 col-form-label col-form-label-sm">Folio Incial:</label>
+        <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" id="folioinicial" name="fechainicial">
+        </div>
+        <label for="foliofinal" class="col-sm-2 col-form-label col-form-label-sm">Folio Incial:</label>
+        <div class="col-sm-2">
+          <input type="text" class="form-control form-control-sm" id="foliofinal" name="foliofinal">
+        </div>
+      </div>
+      <div class="form-row wf-espaciador-row">
+        <label for="controlInicial" class="col-sm-2 col-form-label col-form-label-sm">Control Ini:</label>
+        <div class="col-sm-2">
+          <input id="controlInicial" name="controlinicial" type="number" class="form-control form-control-sm">
+        </div>
+        <label for="controlfinal" class="col-sm-2 col-form-label col-form-label-sm">Control Finall:</label>
+        <div class="col-sm-2">
+          <input type="number" class="form-control form-control-sm" id="controlfinal" name="controlfinal">
+        </div>
+      </div>
+      <div class="form-row wf-espaciador-row">
+        <label for="estatus" class="col-sm-2 col-form-label col-form-label-sm">Estatus:</label>
+        <div class="col-sm-2">
+          <select class="form-control form-control-sm" id="estatus" name="foliofinal">
+            <option value="1">Activo</option>
+            <option value="2">Cancalado</option>
+          </select>
+        </div>
+      </div>
+      <hr>
+      <div class="form-row wf-espaciador-row">
+        <div class="col-sm-3">
+          <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Buscar">
+            <button type="button" class="btn btn-light"><i class="fas fa-search"></i></button>
+          </span>
+        </div>
+        <div class="col-sm-1"></div>
+        <div class="col-sm-8">
+          <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="top" title="Exportar a Excel"><i class="far fa-file-excel"></i></button>
+          <button type="button" class="btn btn-light"><i class="far fa-copy"></i></button>
+          <button type="button" class="btn btn-light"><i class="far fa-envelope"></i></button>
+          <button type="button" class="btn btn-light"><i class="fas fa-print"></i></button>
+        </div>
+      </div>
+    </form>
+    <div class="row wf-espaciador-row">
+      <div class="col-sm-12 wf-form-division">
+        <span>Resultado de la Busqueda</span>
+      </div>
+    </div>
+    <div class="row wf-espaciador-row">
+      <div class="col-sm-12">
+        <ag-grid-angular #agGrid style="width: 100%; height: 150px;" class="ag-theme-blue"
+                         id="searchCfdiGrid"
+                         rowHeight="18px"
+                         [gridOptions]="searchCfdiGrid"
+                         [autoGroupColumnDef]="searchCfdiGrid.columnDefs"
+                         [rowData]="searchCfdiGrid.rowData"
+                         (selectionChanged)="onSeletedRow($event)"
+                         (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+      </div>
+    </div>
+  </div>
+</div>

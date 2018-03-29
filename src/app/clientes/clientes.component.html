@@ -1,0 +1,142 @@
+<div class="card">
+  <div class="card-header"><h4>Catálogo de Clientes</h4></div>
+  <div class="card-body">
+    <div class="row">
+      <label for="cuenta" class="col-sm-2 col-form-label col-form-label-sm">Cuenta:</label>
+      <div class="col-sm-8">
+        <select id="cuenta" class="form-control form-control-sm">
+          <option value="1">Servicios de Programación de Chihuahua S.C.</option>
+          <option value="2">Taylor Made Software House, S.C.</option>
+        </select>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-sm-12">
+        <button type="button" class="btn btn-outline-success btn-sm" [disabled]="accion" (click)="newClic()"><i class="far fa-plus-square wf-derecha"></i>Nuevo</button>
+        <button type="button" class="btn btn-outline-dark btn-sm" [disabled]="accion" (click)="ediClick()"><i class="fas fa-edit wf-derecha"></i>Editar</button>
+        <button type="button" class="btn btn-outline-danger btn-sm" [disabled]="accion" (click)="inactivarClic()"><i class="far fa-thumbs-down wf-derecha"></i>Inactivar</button>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-sm-12" *ngIf="accion === 0">
+        <ag-grid-angular #agGrid style="width: 100%; height: 300px;" class="ag-theme-blue"
+                         id="clientesGrid"
+                         rowHeight="18px"
+                         [gridOptions]="clientesGrid"
+                         [autoGroupColumnDef]="clientesGrid.columnDefs"
+                         [rowData]="clientesGrid.rowData"
+                         (selectionChanged)="onSeletedRow($event)"
+                         (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+      </div>
+    </div>
+    <div class="row" *ngIf="accion === 1 || accion === 2">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h6 *ngIf="accion === 1">Alta Nuevo Cliente</h6>
+            <h6 *ngIf="accion === 2">Edición de Ciente</h6>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="form-row wf-form-division">
+                <div class="col-sm-12">
+                  <span>Datos Generales</span>
+                </div>
+              </div>
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" type="checkbox" value="" id="extranjero">
+                <label class="form-check-label" for="extranjero">Extranjero</label>
+              </div>
+              <div class="form-row">
+                <label for="rfc" class="col-sm-2 col-form-label col-form-label-sm">RFC:</label>
+                <div class="col-sm-3">
+                  <input type="text" id="rfc" name="rfc" class="form-control form-control-sm">
+                </div>
+                <label for="razonsocial" class="col-sm-2 col-form-label col-form-label-sm">Razón Social:</label>
+                <div class="col-sm-5">
+                  <input type="text" id="razonsocial" name="razonsocial" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="form-row">
+                <label for="contacto" class="col-sm-2 col-form-label col-form-label-sm">Contacto:</label>
+                <div class="col-sm-3">
+                  <input type="text" id="contacto" name="contacto" class="form-control form-control-sm">
+                </div>
+                <label for="email" class="col-sm-2 col-form-label col-form-label-sm">Email:</label>
+                <div class="col-sm-3">
+                  <input type="email" id="email" name="email" class="form-control form-control-sm">
+                </div>
+              </div>
+              <br>
+              <div class="row-form wf-form-division">
+                <div class="col-sm-12">
+                  <span>Domicilio Fiscal</span>
+                </div>
+              </div>
+              <br>
+              <div class="form-row">
+                <div class="col-sm-4">
+                  <select id="pais" class="form-control form-control-sm">
+                    <option value="">Pais</option>
+                    <option value="1">México</option>
+                    <option value="2">Estados Unidos</option>
+                  </select>
+                </div>
+                <div class="col-sm-4">
+                  <select id="estado" class="form-control form-control-sm">
+                    <option value="">Estado</option>
+                    <option value="1">Chiahuahua</option>
+                    <option value="2">Sonora</option>
+                  </select>
+                </div>
+                <div class="col-sm-4">
+                  <select id="mpio" class="form-control form-control-sm">
+                    <option value="">Municipio</option>
+                    <option value="1">Aldama</option>
+                    <option value="2">Chihuahua</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-row">
+                <label for="cp" class="col-sm-2 col-form-label col-form-label-sm">Codigo Postal:</label>
+                <div class="col-sm-3">
+                  <input id="cp" type="text" name="cp" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="form-row">
+                <label for="calle" class="col-sm-1 col-form-label col-form-label-sm">Calle:</label>
+                <div class="col-sm-5">
+                  <input id="calle" type="text" name="calle" class="form-control form-control-sm">
+                </div>
+                <label for="numeroExterior" class="col-sm-2 col-form-label col-form-label-sm">Numero Ext.:</label>
+                <div class="col-sm-1">
+                  <input id="numeroExterior" type="text" name="numeroExterior" class="form-control form-control-sm">
+                </div>
+                <label for="numeroInterior" class="col-sm-2 col-form-label col-form-label-sm">Numero Int.:</label>
+                <div class="col-sm-1">
+                  <input id="numeroInterior" type="text" name="numeroInterior" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="form-row">
+                <label for="colonia" class="col-sm-1 col-form-label col-form-label-sm">Colonia</label>
+                <div class="col-sm-8">
+                  <input id="colonia" type="text" name="colonia" class="form-control form-control-sm">
+                </div>
+              </div>
+              <br>
+              <div class="form-row">
+                <div class="col-sm 12">
+                  <button type="button" class="btn btn-outline-success btn-sm"><i class="fas fa-check wf-derecha"></i>Guardar</button>
+                  <button type="button" class="btn btn-outline-dark btn-sm"(click)="cancelFrm()"><i class="fas fa-times wf-derecha"></i>Cancelar</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
